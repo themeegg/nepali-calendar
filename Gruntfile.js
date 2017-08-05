@@ -38,6 +38,18 @@ module.exports = function (grunt) {
                     ext: '.min.js'
                 }]
             },
+            frontend: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= dirs.js %>/frontend/',
+                    src: [
+                        '*.js',
+                        '!*.min.js'
+                    ],
+                    dest: '<%= dirs.js %>/frontend/',
+                    ext: '.min.js'
+                }]
+            },
             vendor: {
                 files: {
                     '<%= dirs.js %>/jquery-tiptip/jquery.tipTip.min.js': ['<%= dirs.js %>/jquery-tiptip/jquery.tipTip.js'],
@@ -86,9 +98,11 @@ module.exports = function (grunt) {
                 files: [
                     '<%= dirs.js %>/admin/*.js',
                     '<%= dirs.js %>/frontend/*.js',
+                    '<%= dirs.js %>/frontend/*.js',
                     '<%= dirs.js %>/nifty_modal/*.js',
                     '<%= dirs.js %>/remodal/*.js',
-                    '!<%= dirs.js %>/admin/*.min.js'
+                    '!<%= dirs.js %>/admin/*.min.js',
+                    '!<%= dirs.js %>/frontend/*.min.js'
                 ],
                 tasks: ['jshint', 'uglify']
             }
@@ -207,7 +221,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('js', [
         'jshint',
-        'uglify:admin'
+        'uglify:admin',
+        'uglify:frontend'
     ]);
 
     grunt.registerTask('css', [
