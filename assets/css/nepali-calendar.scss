@@ -37,7 +37,7 @@
 }
 
 .week_holiday {
-  background: #ff0a0a;
+  background: rgb(202, 78, 78);
   color: #fff;
   font-weight: bold;
 }
@@ -79,18 +79,22 @@ table#NepaliCalendar {
   thead tr:first-child th:first-child:hover {
     cursor: pointer;
   }
-  th {
-    &.Next {
-      background: url("../images/next.png") no-repeat center;
-      &:hover {
-        background: url("../images/next_hover.png") no-repeat center;
+  th{
+    &.Prev,
+    &.Next{
+      background-image: url("../images/pre-next.jpg");
+      width: 40px;
+      height: 40px;
+      background-size:80px auto;
+      &:hover{
+        opacity:0.7;
       }
     }
+    &.Next {
+      background-position:40px 0;
+    }
     &.Prev {
-      background: url("../images/prev.png") no-repeat center;
-      &:hover {
-        background: url("../images/prev_hover.png") no-repeat center;
-      }
+      background-position:2px 0;
     }
   }
 }
