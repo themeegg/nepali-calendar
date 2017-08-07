@@ -5,15 +5,15 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Shortcodes class
+ * NPCAL_Shortcodes class
  *
- * @class       NC_Shortcodes
+ * @class       NPCAL_Shortcodes
  * @version     1.0.0
  * @package     Nepali_Calendar/Classes
  * @category    Class
  * @author      ThemeEgg
  */
-class NC_Shortcodes
+class NPCAL_Shortcodes
 {
 
     /**
@@ -70,7 +70,7 @@ class NC_Shortcodes
      */
     public static function nepali_calendar($atts)
     {
-        return self::shortcode_wrapper(array('NC_Shortcode_Nepali_Calendar', 'output'), $atts);
+        return self::shortcode_wrapper(array('NPCAL_Shortcode_Nepali_Calendar', 'output'), $atts);
     }
 
 }

@@ -2,16 +2,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if (!class_exists('WP_Async_Request', false)) {
+if (!class_exists('WP_Asynpcal_Request', false)) {
 
 
     /**
-     * Abstract WP_Async_Request class.
+     * Abstract WP_Asynpcal_Request class.
      *
      * @package WP-Background-Processing
      * @abstract
      */
-    abstract class WP_Async_Request
+    abstract class WP_Asynpcal_Request
     {
 
         /**
@@ -27,12 +27,12 @@ if (!class_exists('WP_Async_Request', false)) {
         /**
          * Action
          *
-         * (default value: 'async_request')
+         * (default value: 'asynpcal_request')
          *
          * @var string
          * @access protected
          */
-        protected $action = 'async_request';
+        protected $action = 'asynpcal_request';
 
         /**
          * Identifier

@@ -97,14 +97,14 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 		 */
 		private function init_hooks() {
 
-			register_activation_hook( __FILE__, array( 'NC_Install', 'install' ) );
+			register_activation_hook( __FILE__, array( 'NPCAL_Install', 'install' ) );
 
 			add_action( 'after_setup_theme', array( $this, 'include_template_functions' ), 11 );
 
 
 			add_action( 'init', array( $this, 'init' ), 0 );
 
-			add_action( 'init', array( 'NC_Shortcodes', 'init' ) );
+			add_action( 'init', array( 'NPCAL_Shortcodes', 'init' ) );
 
 
 		}
@@ -125,12 +125,12 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 		 * Define FT Constants.
 		 */
 		private function define_constants() {
-			$this->define( 'NC_DS', DIRECTORY_SEPARATOR );
-			$this->define( 'NC_PLUGIN_FILE', __FILE__ );
-			$this->define( 'NC_ABSPATH', dirname( __FILE__ ) . NC_DS );
-			$this->define( 'NC_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-			$this->define( 'NC_VERSION', $this->version );
-			$this->define( 'NC_FORM_PATH', NC_ABSPATH . 'includes' . NC_DS . 'form' . NC_DS );
+			$this->define( 'NPCAL_DS', DIRECTORY_SEPARATOR );
+			$this->define( 'NPCAL_PLUGIN_FILE', __FILE__ );
+			$this->define( 'NPCAL_ABSPATH', dirname( __FILE__ ) . NPCAL_DS );
+			$this->define( 'NPCAL_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+			$this->define( 'NPCAL_VERSION', $this->version );
+			$this->define( 'NPCAL_FORM_PATH', NPCAL_ABSPATH . 'includes' . NPCAL_DS . 'form' . NPCAL_DS );
 		}
 
 
@@ -174,31 +174,31 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 
 
 			// core
-			include( NC_ABSPATH . 'includes' . NC_DS . 'nc-core-functions.php' );
+			include( NPCAL_ABSPATH . 'includes' . NPCAL_DS . 'npcal-core-functions.php' );
 
 			/**
 			 * Class autoloader.
 			 */
-			include_once( NC_ABSPATH . 'includes/class-nc-autoloader.php' );
+			include_once( NPCAL_ABSPATH . 'includes/class-npcal-autoloader.php' );
 
 
 			/**
 			 * Interfaces.
 			 */
 
-			include_once( NC_ABSPATH . 'includes/interfaces/class-nc-shortcode-interface.php' );
+			include_once( NPCAL_ABSPATH . 'includes/interfaces/class-npcal-shortcode-interface.php' );
 
 			/**
 			 * Core classes.
 			 */
 
-			include_once( NC_ABSPATH . 'includes/class-nc-install.php' );
+			include_once( NPCAL_ABSPATH . 'includes/class-npcal-install.php' );
 
-			include_once( NC_ABSPATH . 'includes/class-nc-ajax.php' );
+			include_once( NPCAL_ABSPATH . 'includes/class-npcal-ajax.php' );
 
 			if ( $this->is_request( 'admin' ) ) {
 
-				include_once( NC_ABSPATH . 'includes/admin/class-nc-admin.php' );
+				include_once( NPCAL_ABSPATH . 'includes/admin/class-npcal-admin.php' );
 			}
 
 			if ( $this->is_request( 'frontend' ) ) {
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 			}
 
 
-			$this->query = new NC_Query();
+			$this->query = new NPCAL_Query();
 
 		}
 
@@ -217,9 +217,9 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 		 * Include required frontend files.
 		 */
 		public function frontend_includes() {
-			include_once( NC_ABSPATH . 'includes/frontend/class-nc-frontend.php' );
+			include_once( NPCAL_ABSPATH . 'includes/frontend/class-npcal-frontend.php' );
 
-			include_once( NC_ABSPATH . 'includes/class-nc-shortcodes.php' );         // Shortcodes Class
+			include_once( NPCAL_ABSPATH . 'includes/class-npcal-shortcodes.php' );         // Shortcodes Class
 
 		}
 
@@ -282,9 +282,9 @@ endif;
  * @since  1.0.0
  * @return object
  */
-function NC() {
+function NPCAL() {
 	return Nepali_Calendar::instance();
 }
 
 // Global for backwards compatibility.
-$GLOBALS['nepali-calendar'] = NC();
+$GLOBALS['nepali-calendar'] = NPCAL();

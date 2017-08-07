@@ -2,7 +2,7 @@
 /**
  * Contains the query functions for Nepali Calendar which alter the front-end post queries and loops
  *
- * @class        NC_Query
+ * @class        NPCAL_Query
  * @version        1.0.0
  * @package        Nepali_Calendar/Classes
  * @category    Class
@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * NC_Query Class.
+ * NPCAL_Query Class.
  */
-class NC_Query {
+class NPCAL_Query {
 
 	/** @public array Query vars to add to wp */
 	public $query_vars = array();

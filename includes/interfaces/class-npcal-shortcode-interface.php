@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Shortcode_Interface
+ * NPCAL_Shortcode_Interface
  *
  * Functions that must be defined shortcode classes.
  *
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
  * @category Interface
  * @author   ThemeEgg
  */
-interface NC_Shortcode_Interface
+interface NPCAL_Shortcode_Interface
 {
 
     public static function output($args = array());

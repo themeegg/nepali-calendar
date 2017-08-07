@@ -1,10 +1,10 @@
 <?php
 /**
- * Nepali_Calendar NC_Ajax
+ * Nepali_Calendar NPCAL_Ajax
  *
  * AJAX Event Handler
  *
- * @class    NC_Ajax
+ * @class    NPCAL_Ajax
  * @version  1.0.0
  * @package  Nepali_Calendar/Classes
  * @category Class
@@ -16,9 +16,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Ajax Class
+ * NPCAL_Ajax Class
  */
-class NC_Ajax
+class NPCAL_Ajax
 {
 
     /**
@@ -76,4 +76,4 @@ class NC_Ajax
 
 }
 
-NC_Ajax::init();
+NPCAL_Ajax::init();

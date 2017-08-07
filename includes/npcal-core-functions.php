@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-include( 'nc-formatting-functions.php' );
-include( 'nc-widget-functions.php' );
+include( 'npcal-formatting-functions.php' );
+include( 'npcal-widget-functions.php' );
 
 
 /**
@@ -29,9 +29,9 @@ include( 'nc-widget-functions.php' );
  *
  * @return string
  */
-function nc_help_tip( $tip, $allow_html = false ) {
+function npcal_help_tip( $tip, $allow_html = false ) {
 	if ( $allow_html ) {
-		$tip = nc_sanitize_tooltip( $tip );
+		$tip = npcal_sanitize_tooltip( $tip );
 	} else {
 		$tip = esc_attr( $tip );
 	}
@@ -42,33 +42,33 @@ function nc_help_tip( $tip, $allow_html = false ) {
 /**
  * Get template part (for templates like the shop-loop).
  *
- * NC_TEMPLATE_DEBUG_MODE will prevent overrides in themes from taking priority.
+ * NPCAL_TEMPLATE_DEBUG_MODE will prevent overrides in themes from taking priority.
  *
  * @access public
  *
  * @param mixed $slug
  * @param string $name (default: '')
  */
-function nc_get_template_part( $slug, $name = '' ) {
+function npcal_get_template_part( $slug, $name = '' ) {
 	$template = '';
 
 	// Look in yourtheme/slug-name.php and yourtheme/nepali-calendar/slug-name.php
-	if ( $name && ! NC_TEMPLATE_DEBUG_MODE ) {
-		$template = locate_template( array( "{$slug}-{$name}.php", NC()->template_path() . "{$slug}-{$name}.php" ) );
+	if ( $name && ! NPCAL_TEMPLATE_DEBUG_MODE ) {
+		$template = locate_template( array( "{$slug}-{$name}.php", NPCAL()->template_path() . "{$slug}-{$name}.php" ) );
 	}
 
 	// Get default slug-name.php
-	if ( ! $template && $name && file_exists( NC()->plugin_path() . "/templates/{$slug}-{$name}.php" ) ) {
-		$template = NC()->plugin_path() . "/templates/{$slug}-{$name}.php";
+	if ( ! $template && $name && file_exists( NPCAL()->plugin_path() . "/templates/{$slug}-{$name}.php" ) ) {
+		$template = NPCAL()->plugin_path() . "/templates/{$slug}-{$name}.php";
 	}
 
 	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/teg-tfwitter-api/slug.php
-	if ( ! $template && ! NC_TEMPLATE_DEBUG_MODE ) {
-		$template = locate_template( array( "{$slug}.php", NC()->template_path() . "{$slug}.php" ) );
+	if ( ! $template && ! NPCAL_TEMPLATE_DEBUG_MODE ) {
+		$template = locate_template( array( "{$slug}.php", NPCAL()->template_path() . "{$slug}.php" ) );
 	}
 
 	// Allow 3rd party plugins to filter template file from their plugin.
-	$template = apply_filters( 'nc_get_template_part', $template, $slug, $name );
+	$template = apply_filters( 'npcal_get_template_part', $template, $slug, $name );
 
 	if ( $template ) {
 		load_template( $template, false );
@@ -85,12 +85,12 @@ function nc_get_template_part( $slug, $name = '' ) {
  * @param string $template_path (default: '')
  * @param string $default_path (default: '')
  */
-function nc_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+function npcal_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 	if ( ! empty( $args ) && is_array( $args ) ) {
 		extract( $args );
 	}
 
-	$located = nc_locate_template( $template_name, $template_path, $default_path );
+	$located = npcal_locate_template( $template_name, $template_path, $default_path );
 
 	if ( ! file_exists( $located ) ) {
 		_doing_it_wrong( __FUNCTION__, sprintf( __( '%s does not exist.', 'nepali-calendar' ), '<code>' . $located . '</code>' ), '1.0' );
@@ -99,7 +99,7 @@ function nc_get_template( $template_name, $args = array(), $template_path = '', 
 	}
 
 	// Allow 3rd party plugin filter template file from their plugin.
-	$located = apply_filters( 'nc_get_template', $located, $template_name, $args, $template_path, $default_path );
+	$located = apply_filters( 'npcal_get_template', $located, $template_name, $args, $template_path, $default_path );
 
 	do_action( 'nepali_calendar_before_template_part', $template_name, $template_path, $located, $args );
 
@@ -111,9 +111,9 @@ function nc_get_template( $template_name, $args = array(), $template_path = '', 
 
 
 /**
- * Like nc_get_template, but returns the HTML instead of outputting.
+ * Like npcal_get_template, but returns the HTML instead of outputting.
  *
- * @see nc_get_template
+ * @see npcal_get_template
  * @since 2.5.0
  *
  * @param string $template_name
@@ -123,9 +123,9 @@ function nc_get_template( $template_name, $args = array(), $template_path = '', 
  *
  * @return string
  */
-function nc_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+function npcal_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 	ob_start();
-	nc_get_template( $template_name, $args, $template_path, $default_path );
+	npcal_get_template( $template_name, $args, $template_path, $default_path );
 
 	return ob_get_clean();
 }
@@ -147,13 +147,13 @@ function nc_get_template_html( $template_name, $args = array(), $template_path =
  *
  * @return string
  */
-function nc_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+function npcal_locate_template( $template_name, $template_path = '', $default_path = '' ) {
 	if ( ! $template_path ) {
-		$template_path = NC()->template_path();
+		$template_path = NPCAL()->template_path();
 	}
 
 	if ( ! $default_path ) {
-		$default_path = NC()->plugin_path() . '/templates/';
+		$default_path = NPCAL()->plugin_path() . '/templates/';
 	}
 
 	// Look within passed path within the theme - this is priority.
@@ -165,7 +165,7 @@ function nc_locate_template( $template_name, $template_path = '', $default_path 
 	);
 
 	// Get default template/
-	if ( ! $template || NC_TEMPLATE_DEBUG_MODE ) {
+	if ( ! $template || NPCAL_TEMPLATE_DEBUG_MODE ) {
 		$template = $default_path . $template_name;
 	}
 
@@ -173,7 +173,7 @@ function nc_locate_template( $template_name, $template_path = '', $default_path 
 	return apply_filters( 'nepali_calendar_locate_template', $template, $template_name, $template_path );
 }
 
-function nc_include( $path ) {
+function npcal_include( $path ) {
 	$path = str_replace( '/', DIRECTORY_SEPARATOR, $path );
 	$path = str_replace( '\\', DIRECTORY_SEPARATOR, $path );
 	if ( ! file_exists( $path ) ) {
@@ -184,7 +184,7 @@ function nc_include( $path ) {
 
 }
 
-function nc_templates() {
+function npcal_templates() {
 
 
 	return apply_filters( 'nepali_calendar_templates', array(
@@ -197,7 +197,7 @@ function nc_templates() {
 	) );
 }
 
-function nc_nifty_modal_setting_options() {
+function npcal_nifty_modal_setting_options() {
 
 	return apply_filters( 'nepali_calendar_nifty_modal_settings', array(
 
@@ -227,9 +227,9 @@ function nc_nifty_modal_setting_options() {
 }
 
 
-function nc_is_modal_template( $handle ) {
+function npcal_is_modal_template( $handle ) {
 
-	$template = get_option( 'nc_layout_list', 'default' );
+	$template = get_option( 'npcal_layout_list', 'default' );
 
 	$template = str_replace( '_', '-', $template );
 

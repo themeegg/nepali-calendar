@@ -2,7 +2,7 @@
 /**
  * Installation related functions and actions.
  *
- * @class    NC_Install
+ * @class    NPCAL_Install
  * @version  1.0.0
  * @package  Nepali_Calendar/Classes
  * @category Admin
@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * NC_Install Class.
+ * NPCAL_Install Class.
  */
-class NC_Install {
+class NPCAL_Install {
 	/** @var array DB updates and callbacks that need to be run per version */
 	private static $db_updates = array(
 		'1.0.0' => array(
@@ -34,11 +34,8 @@ class NC_Install {
 		add_action( 'init', array( __CLASS__, 'check_version' ), 5 );
 		add_action( 'init', array( __CLASS__, 'init_background_updater' ), 5 );
 		add_action( 'admin_init', array( __CLASS__, 'install_actions' ) );
-		add_action( 'in_plugin_update_message-nepali-calendar/nepali-calendar.php', array(
-			__CLASS__,
-			'in_plugin_update_message'
-		) );
-		add_filter( 'plugin_action_links_' . NC_PLUGIN_BASENAME, array( __CLASS__, 'plugin_action_links' ) );
+
+		add_filter( 'plugin_action_links_' . NPCAL_PLUGIN_BASENAME, array( __CLASS__, 'plugin_action_links' ) );
 		add_filter( 'plugin_row_meta', array( __CLASS__, 'plugin_row_meta' ), 10, 2 );
 	}
 
@@ -46,8 +43,8 @@ class NC_Install {
 	 * Init background updates.
 	 */
 	public static function init_background_updater() {
-		include_once( 'class-nc-background-updater.php' );
-		self::$background_updater = new NC_Background_Updater();
+		include_once( 'class-npcal-background-updater.php' );
+		self::$background_updater = new NPCAL_Background_Updater();
 	}
 
 	/**
@@ -56,7 +53,7 @@ class NC_Install {
 	 * This check is done on all requests and runs if the versions do not match.
 	 */
 	public static function check_version() {
-		if ( ! defined( 'IFRAME_REQUEST' ) && get_option( 'nepali_calendar_version' ) !== NC()->version ) {
+		if ( ! defined( 'IFRAME_REQUEST' ) && get_option( 'nepali_calendar_version' ) !== NPCAL()->version ) {
 			self::install();
 			do_action( 'nepali_calendar_updated' );
 		}
@@ -70,7 +67,7 @@ class NC_Install {
 	public static function install_actions() {
 		if ( ! empty( $_GET['do_update_nepali_calendar'] ) ) {
 			self::update();
-			NC_Admin_Notices::add_notice( 'update' );
+			NPCAL_Admin_Notices::add_notice( 'update' );
 		}
 		if ( ! empty( $_GET['force_update_nepali_calendar'] ) ) {
 			do_action( 'wp_ur_updater_cron' );
@@ -79,7 +76,7 @@ class NC_Install {
 	}
 
 	/**
-	 * Install NC.
+	 * Install NPCAL.
 	 */
 	public static function install() {
 		global $wpdb;
@@ -88,19 +85,19 @@ class NC_Install {
 			return;
 		}
 
-		if ( ! defined( 'NC_INSTALLING' ) ) {
-			define( 'NC_INSTALLING', true );
+		if ( ! defined( 'NPCAL_INSTALLING' ) ) {
+			define( 'NPCAL_INSTALLING', true );
 		}
 
 		// Ensure needed classes are loaded
-		include_once( dirname( __FILE__ ) . '/admin/class-nc-admin-notices.php' );
+		include_once( dirname( __FILE__ ) . '/admin/class-npcal-admin-notices.php' );
 
 
 		// Queue upgrades wizard
 		$current_ur_version = get_option( 'nepali_calendar_version', null );
 		$current_db_version = get_option( 'nepali_calendar_db_version', null );
 
-		NC_Admin_Notices::remove_all_notices();
+		NPCAL_Admin_Notices::remove_all_notices();
 
 		// No versions? This is a new install :)
 		if ( is_null( $current_ur_version ) && is_null( $current_db_version ) && apply_filters( 'nepali_calendar_enable_setup_wizard', true ) ) {
@@ -108,7 +105,7 @@ class NC_Install {
 		}
 
 		if ( ! is_null( $current_db_version ) && version_compare( $current_db_version, max( array_keys( self::$db_updates ) ), '<' ) ) {
-			NC_Admin_Notices::add_notice( 'update' );
+			NPCAL_Admin_Notices::add_notice( 'update' );
 		} else {
 			self::update_db_version();
 		}
@@ -137,11 +134,11 @@ class NC_Install {
 	}
 
 	/**
-	 * Update NC version to current.
+	 * Update NPCAL version to current.
 	 */
 	private static function update_ur_version() {
 		delete_option( 'nepali_calendar_version' );
-		add_option( 'nepali_calendar_version', NC()->version );
+		add_option( 'nepali_calendar_version', NPCAL()->version );
 	}
 
 	/**
@@ -172,26 +169,9 @@ class NC_Install {
 	 */
 	public static function update_db_version( $version = null ) {
 		delete_option( 'nepali_calendar_db_version' );
-		add_option( 'nepali_calendar_db_version', is_null( $version ) ? NC()->version : $version );
+		add_option( 'nepali_calendar_db_version', is_null( $version ) ? NPCAL()->version : $version );
 	}
 
-	/**
-	 * Show plugin changes. Code adapted from W3 Total Cache.
-	 */
-	public static function in_plugin_update_message( $args ) {
-		$transient_name = 'ur_upgrade_notice_' . $args['Version'];
-
-		if ( false === ( $upgrade_notice = get_transient( $transient_name ) ) ) {
-			$response = wp_safe_remote_get( 'https://plugins.svn.wordpress.org/nepali-calendar/trunk/readme.txt' );
-
-			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
-				$upgrade_notice = self::parse_update_notice( $response['body'], $args['new_version'] );
-				set_transient( $transient_name, $upgrade_notice, DAY_IN_SECONDS );
-			}
-		}
-
-		echo wp_kses_post( $upgrade_notice );
-	}
 
 	/**
 	 * Parse update notice from readme file
@@ -204,7 +184,7 @@ class NC_Install {
 	private static function parse_update_notice( $content, $new_version ) {
 		// Output Upgrade Notice.
 		$matches        = null;
-		$regexp         = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( NC_VERSION ) . '\s*=|$)~Uis';
+		$regexp         = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( NPCAL_VERSION ) . '\s*=|$)~Uis';
 		$upgrade_notice = '';
 
 		if ( preg_match( $regexp, $content, $matches ) ) {
@@ -212,7 +192,7 @@ class NC_Install {
 			$notices = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
 
 			// Check the latest stable version and ignore trunk.
-			if ( $version === $new_version && version_compare( NC_VERSION, $version, '<' ) ) {
+			if ( $version === $new_version && version_compare( NPCAL_VERSION, $version, '<' ) ) {
 
 				$upgrade_notice .= '<div class="ur_plugin_upgrade_notice">';
 
@@ -252,7 +232,7 @@ class NC_Install {
 	 * @return array
 	 */
 	public static function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( $plugin_file == NC_PLUGIN_BASENAME ) {
+		if ( $plugin_file == NPCAL_PLUGIN_BASENAME ) {
 			$new_plugin_meta = array(
 				'docs'    => '<a href="' . esc_url( apply_filters( 'nepali_calendar_docs_url', 'http://docs.themeegg.com/docs/nepali-calendar/' ) ) . '" title="' . esc_attr( __( 'View Nepali Calendar Documentation', 'nepali-calendar' ) ) . '">' . __( 'Docs', 'nepali-calendar' ) . '</a>',
 				'support' => '<a href="' . esc_url( apply_filters( 'nepali_calendar_support_url', 'http://support.themeegg.com/' ) ) . '" title="' . esc_attr( __( 'Visit Free Customer Support Forum', 'nepali-calendar' ) ) . '">' . __( 'Free Support', 'nepali-calendar' ) . '</a>',
@@ -265,4 +245,4 @@ class NC_Install {
 	}
 }
 
-NC_Install::init();
+NPCAL_Install::init();

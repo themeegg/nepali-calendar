@@ -17,12 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array
  */
-function nc_get_screen_ids() {
+function npcal_get_screen_ids() {
 
-	$nc_screen_id = sanitize_title( __( 'Nepali Calendar', 'nepali-calendar' ) );
+	$npcal_screen_id = sanitize_title( __( 'Nepali Calendar', 'nepali-calendar' ) );
 	$screen_ids    = array(
-		'toplevel_page_' . $nc_screen_id,
-		//$nc_screen_id . '_page_teg_ta-reports',
+		'toplevel_page_' . $npcal_screen_id,
+		//$npcal_screen_id . '_page_teg_ta-reports',
 	);
 
 
@@ -35,7 +35,7 @@ function nc_get_screen_ids() {
  *
  * @return array
  */
-function nc_get_current_tab() {
+function npcal_get_current_tab() {
 
 	$current_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
 
@@ -47,7 +47,7 @@ function nc_get_current_tab() {
  *
  * @return array
  */
-function nc_get_current_section() {
+function npcal_get_current_section() {
 
 	$current_tab = isset( $_GET['section'] ) ? $_GET['section'] : '';
 

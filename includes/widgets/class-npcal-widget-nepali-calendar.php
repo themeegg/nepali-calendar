@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @category Widgets
  * @package  NepaliCalendar/Widgets
  * @version  1.0
- * @extends  NC_Widget
+ * @extends  NPCAL_Widget
  */
-class NC_Widget_Nepali_Calendar extends NC_Widget {
+class NPCAL_Widget_Nepali_Calendar extends NPCAL_Widget {
 
 	/**
 	 * Constructor.
@@ -66,7 +66,7 @@ class NC_Widget_Nepali_Calendar extends NC_Widget {
 			'instance' => $instance
 		);
 
-		nc_get_template( 'widgets/content-widget-nepali-calendar.php', $data );
+		npcal_get_template( 'widgets/content-widget-nepali-calendar.php', $data );
 
 
 		$this->widget_end( $args );

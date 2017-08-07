@@ -2,7 +2,7 @@
 /**
  * Display notices in admin.
  *
- * @class    NC_Admin_Notices
+ * @class    NPCAL_Admin_Notices
  * @version  1.0.0
  * @package  Nepali_Calendar/Admin
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Admin_Notices Class.
+ * NPCAL_Admin_Notices Class.
  */
-class NC_Admin_Notices
+class NPCAL_Admin_Notices
 {
 
     /**
@@ -131,7 +131,7 @@ class NC_Admin_Notices
         $notices = self::get_notices();
 
         if ($notices) {
-            wp_enqueue_style('nepali-calendar-activation', NC()->plugin_url() . '/assets/css/activation.css', array(), NC_VERSION);
+            wp_enqueue_style('nepali-calendar-activation', NPCAL()->plugin_url() . '/assets/css/activation.css', array(), NPCAL_VERSION);
             foreach ($notices as $notice) {
                 if (!empty(self::$core_notices[$notice]) && apply_filters('nepali_calendar_show_admin_notice', true, $notice)) {
                     add_action('admin_notices', array(__CLASS__, self::$core_notices[$notice]));
@@ -178,8 +178,8 @@ class NC_Admin_Notices
      */
     public static function update_notice()
     {
-        if (version_compare(get_option('nepali_calendar_db_version'), NC_VERSION, '<')) {
-            $updater = new NC_Background_Updater();
+        if (version_compare(get_option('nepali_calendar_db_version'), NPCAL_VERSION, '<')) {
+            $updater = new NPCAL_Background_Updater();
             if ($updater->is_updating() || !empty($_GET['do_update_nepali_calendar'])) {
                 include('views/html-notice-updating.php');
             } else {
@@ -191,4 +191,4 @@ class NC_Admin_Notices
     }
 }
 
-NC_Admin_Notices::init();
+NPCAL_Admin_Notices::init();

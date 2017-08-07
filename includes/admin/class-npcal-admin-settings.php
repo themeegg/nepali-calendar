@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'NC_Admin_Settings', false ) ) :
+if ( ! class_exists( 'NPCAL_Admin_Settings', false ) ) :
 
 /**
- * NC_Admin_Settings Class.
+ * NPCAL_Admin_Settings Class.
  */
-class NC_Admin_Settings {
+class NPCAL_Admin_Settings {
 
 	/**
 	 * Setting pages.
@@ -47,11 +47,11 @@ class NC_Admin_Settings {
 		if ( empty( self::$settings ) ) {
 			$settings = array();
 
-			nc_include( dirname( __FILE__ ) . '/settings/class-nc-settings-page.php' );
+			npcal_include( dirname( __FILE__ ) . '/settings/class-npcal-settings-page.php' );
 
-			$settings[]= include_once( dirname( __FILE__ ) . '/settings/class-nc-settings-general.php' );
+			$settings[]= include_once( dirname( __FILE__ ) . '/settings/class-npcal-settings-general.php' );
 
-			$settings[] = include_once( dirname( __FILE__ ) . '/settings/class-nc-settings-advance.php' );
+			$settings[] = include_once( dirname( __FILE__ ) . '/settings/class-npcal-settings-advance.php' );
 
 		self::$settings = apply_filters( 'nepali_calendar_get_settings_pages', $settings );
 		}
@@ -79,8 +79,8 @@ class NC_Admin_Settings {
 
 		// Clear any unwanted data and flush rules
 		delete_transient( 'nepali_calendar_cache_excluded_uris' );
-		NC()->query->init_query_vars();
-		NC()->query->add_endpoints();
+		NPCAL()->query->init_query_vars();
+		NPCAL()->query->add_endpoints();
 		wp_schedule_single_event( time(), 'nepali_calendar_flush_rewrite_rules' );
 
 		do_action( 'nepali_calendar_settings_saved' );
@@ -132,7 +132,7 @@ class NC_Admin_Settings {
 
 		do_action( 'nepali_calendar_settings_start' );
 
-		wp_enqueue_script( 'nepali_calendar_settings', NC()->plugin_url() . '/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'select2' ), NC()->version, true );
+		wp_enqueue_script( 'nepali_calendar_settings', NPCAL()->plugin_url() . '/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'select2' ), NPCAL()->version, true );
 
 		wp_localize_script( 'nepali_calendar_settings', 'nepali_calendar_settings_params', array(
 			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'nepali-calendar' ),
@@ -151,12 +151,12 @@ class NC_Admin_Settings {
 		}
 
 		// Add any posted messages
-		if ( ! empty( $_GET['nc_error'] ) ) {
-			self::add_error( stripslashes( $_GET['nc_error'] ) );
+		if ( ! empty( $_GET['npcal_error'] ) ) {
+			self::add_error( stripslashes( $_GET['npcal_error'] ) );
 		}
 
-		if ( ! empty( $_GET['nc_message'] ) ) {
-			self::add_message( stripslashes( $_GET['nc_message'] ) );
+		if ( ! empty( $_GET['npcal_message'] ) ) {
+			self::add_message( stripslashes( $_GET['npcal_message'] ) );
 		}
 
 		// Get tabs for the settings page
@@ -513,7 +513,7 @@ class NC_Admin_Settings {
 				case 'image_width' :
 
 					$image_size       = str_replace( '_image_size', '', $value['id'] );
-					$size             = nc_get_image_size( $image_size );
+					$size             = npcal_get_image_size( $image_size );
 					$width            = isset( $size['width'] ) ? $size['width'] : $value['default']['width'];
 					$height           = isset( $size['height'] ) ? $size['height'] : $value['default']['height'];
 					$crop             = isset( $size['crop'] ) ? $size['crop'] : $value['default']['crop'];
@@ -581,7 +581,7 @@ class NC_Admin_Settings {
 							<?php echo $tooltip_html; ?>
 						</th>
 						<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country&hellip;', 'nepali-calendar' ); ?>" aria-label="<?php esc_attr_e( 'Country', 'nepali-calendar' ) ?>" class="wc-enhanced-select">
-							<?php NC()->countries->country_dropdown_options( $country, $state ); ?>
+							<?php NPCAL()->countries->country_dropdown_options( $country, $state ); ?>
 						</select> <?php echo $description; ?>
 						</td>
 					</tr><?php
@@ -595,7 +595,7 @@ class NC_Admin_Settings {
 					if ( ! empty( $value['options'] ) ) {
 						$countries = $value['options'];
 					} else {
-						$countries = NC()->countries->countries;
+						$countries = NPCAL()->countries->countries;
 					}
 
 					asort( $countries );
@@ -679,7 +679,7 @@ class NC_Admin_Settings {
 		if ( $tooltip_html && in_array( $value['type'], array( 'checkbox' ) ) ) {
 			$tooltip_html = '<p class="description">' . $tooltip_html . '</p>';
 		} elseif ( $tooltip_html ) {
-			$tooltip_html = nc_help_tip( $tooltip_html );
+			$tooltip_html = npcal_help_tip( $tooltip_html );
 		}
 
 		return array(
@@ -739,13 +739,13 @@ class NC_Admin_Settings {
 					break;
 				case 'multiselect' :
 				case 'multi_select_countries' :
-					$value = array_filter( array_map( 'nc_clean', (array) $raw_value ) );
+					$value = array_filter( array_map( 'npcal_clean', (array) $raw_value ) );
 					break;
 				case 'image_width' :
 					$value = array();
 					if ( isset( $raw_value['width'] ) ) {
-						$value['width']  = nc_clean( $raw_value['width'] );
-						$value['height'] = nc_clean( $raw_value['height'] );
+						$value['width']  = npcal_clean( $raw_value['width'] );
+						$value['height'] = npcal_clean( $raw_value['height'] );
 						$value['crop']   = isset( $raw_value['crop'] ) ? 1 : 0;
 					} else {
 						$value['width']  = $option['default']['width'];
@@ -763,7 +763,7 @@ class NC_Admin_Settings {
 					$value   = in_array( $raw_value, $allowed_values ) ? $raw_value : $default;
 					break;
 				default :
-					$value = nc_clean( $raw_value );
+					$value = npcal_clean( $raw_value );
 					break;
 
 
@@ -777,7 +777,7 @@ class NC_Admin_Settings {
 			 * @deprecated 2.4.0 - doesn't allow manipulation of values!
 			 */
 			if ( has_action( 'nepali_calendar_update_option_' . sanitize_title( $option['type'] ) ) ) {
-				//nc_deprecated_function( 'The nepali_calendar_update_option_X action', '2.4.0', 'nepali_calendar_admin_settings_sanitize_option filter' );
+				//npcal_deprecated_function( 'The nepali_calendar_update_option_X action', '2.4.0', 'nepali_calendar_admin_settings_sanitize_option filter' );
 				do_action( 'nepali_calendar_update_option_' . sanitize_title( $option['type'] ), $option );
 				continue;
 			}

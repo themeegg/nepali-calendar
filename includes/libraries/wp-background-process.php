@@ -9,9 +9,9 @@ if (!class_exists('WP_Background_Process', false)) {
      *
      * @abstract
      * @package WP-Background-Processing
-     * @extends WP_Async_Request
+     * @extends WP_Asynpcal_Request
      */
-    abstract class WP_Background_Process extends WP_Async_Request
+    abstract class WP_Background_Process extends WP_Asynpcal_Request
     {
 
         /**

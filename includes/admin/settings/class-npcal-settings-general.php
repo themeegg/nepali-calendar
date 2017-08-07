@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( ! class_exists( 'NC_Settings_General', false ) ) :
+if ( ! class_exists( 'NPCAL_Settings_General', false ) ) :
 
 	/**
-	 * NC_Admin_Settings_General.
+	 * NPCAL_Admin_Settings_General.
 	 */
-	class NC_Settings_General extends NC_Settings_Page {
+	class NPCAL_Settings_General extends NPCAL_Settings_Page {
 
 		/**
 		 * Constructor.
@@ -25,7 +25,7 @@ if ( ! class_exists( 'NC_Settings_General', false ) ) :
 		public function __construct() {
 
 			$this->id    = 'general';
-			$this->label = NC_Lang::text( 'general_tab_label' );
+			$this->label = NPCAL_Lang::text( 'general_tab_label' );
 
 			add_filter( 'nepali_calendar_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 			add_action( 'nepali_calendar_settings_' . $this->id, array( $this, 'output' ) );
@@ -43,15 +43,15 @@ if ( ! class_exists( 'NC_Settings_General', false ) ) :
 			$settings = array(
 
 				array(
-					'title' => NC_Lang::text( 'general_option' ),
+					'title' => NPCAL_Lang::text( 'general_option' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'general_options'
 				),
 
 				array(
-					'title'    => NC_Lang::text( 'dialog_width' ),
-					'desc'     => NC_Lang::text( 'dialog_width_description' ),
+					'title'    => NPCAL_Lang::text( 'dialog_width' ),
+					'desc'     => NPCAL_Lang::text( 'dialog_width_description' ),
 					'id'       => 'nepali_calendar_width',
 					'default'  => 'auto',
 					'type'     => 'text',
@@ -60,8 +60,8 @@ if ( ! class_exists( 'NC_Settings_General', false ) ) :
 
 				),
 				array(
-					'title'    => NC_Lang::text( 'show_dialog_close_button' ),
-					'desc'     => NC_Lang::text( 'show_dialog_close_button_description' ),
+					'title'    => NPCAL_Lang::text( 'show_dialog_close_button' ),
+					'desc'     => NPCAL_Lang::text( 'show_dialog_close_button_description' ),
 					'id'       => 'nepali_calendar_show_close_button',
 					'type'     => 'checkbox',
 					'default'  => 'yes',
@@ -71,8 +71,8 @@ if ( ! class_exists( 'NC_Settings_General', false ) ) :
 
 				),
 				array(
-					'title'    => NC_Lang::text( 'close_button_label' ),
-					'desc'     => NC_Lang::text( 'close_button_label_description' ),
+					'title'    => NPCAL_Lang::text( 'close_button_label' ),
+					'desc'     => NPCAL_Lang::text( 'close_button_label_description' ),
 					'id'       => 'nepali_calendar_close_button_label',
 					'default'  => __( 'Close', 'nepali-calendar' ),
 					'type'     => 'text',
@@ -102,10 +102,10 @@ if ( ! class_exists( 'NC_Settings_General', false ) ) :
 			$settings = $this->get_settings();
 
 
-			NC_Admin_Settings::save_fields( $settings );
+			NPCAL_Admin_Settings::save_fields( $settings );
 		}
 	}
 
 endif;
 
-return new NC_Settings_General();
+return new NPCAL_Settings_General();

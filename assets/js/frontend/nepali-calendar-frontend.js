@@ -21,8 +21,8 @@
         }
     }
 
-    if ($('.nc-nifty-modal .md-trigger').length != 0) {
+    if ($('.npcal-nifty-modal .md-trigger').length != 0) {
  
-        $('.nc-nifty-modal .md-trigger').trigger('click');
+        $('.npcal-nifty-modal .md-trigger').trigger('click');
     }
 }(jQuery, document, window));

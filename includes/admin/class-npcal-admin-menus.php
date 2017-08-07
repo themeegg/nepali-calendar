@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'NC_Admin_Menus', false ) ) :
+if ( ! class_exists( 'NPCAL_Admin_Menus', false ) ) :
 
 	/**
-	 * NC_Admin_Menus Class.
+	 * NPCAL_Admin_Menus Class.
 	 */
-	class NC_Admin_Menus {
+	class NPCAL_Admin_Menus {
 
 		/**
 		 * Hook in tabs.
@@ -50,11 +50,11 @@ if ( ! class_exists( 'NC_Admin_Menus', false ) ) :
 		 * Init the settings page.
 		 */
 		public function settings_page() {
-			NC_Admin_Settings::output();
+			NPCAL_Admin_Settings::output();
 		}
 
 	}
 
 endif;
 
-return new NC_Admin_Menus();
+return new NPCAL_Admin_Menus();

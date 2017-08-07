@@ -12,12 +12,12 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('NC_Settings_Advance', false)) :
+if (!class_exists('NPCAL_Settings_Advance', false)) :
 
     /**
-     * NC_Settings_Advance.
+     * NPCAL_Settings_Advance.
      */
-    class NC_Settings_Advance extends NC_Settings_Page
+    class NPCAL_Settings_Advance extends NPCAL_Settings_Page
     {
 
         /**
@@ -64,7 +64,7 @@ if (!class_exists('NC_Settings_Advance', false)) :
 
             $settings = $this->get_settings($current_section);
 
-            NC_Admin_Settings::output_fields($settings);
+            NPCAL_Admin_Settings::output_fields($settings);
         }
 
         /**
@@ -75,7 +75,7 @@ if (!class_exists('NC_Settings_Advance', false)) :
             global $current_section;
 
             $settings = $this->get_settings($current_section);
-            NC_Admin_Settings::save_fields($settings);
+            NPCAL_Admin_Settings::save_fields($settings);
         }
 
         /**
@@ -95,7 +95,7 @@ if (!class_exists('NC_Settings_Advance', false)) :
                         'title' => __('Other Settings', 'nepali-calendar'),
                         'type' => 'title',
                         'desc' => '',
-                        'id' => 'nc_advance_other_settings'
+                        'id' => 'npcal_advance_other_settings'
                     ), array(
                         'type' => 'sectionend',
                         'id' => 'nepali_calendar_layout_settings',
@@ -109,18 +109,18 @@ if (!class_exists('NC_Settings_Advance', false)) :
                     array(
                         'title' => __('Dialog Layouts', 'nepali-calendar'),
                         'type' => 'title',
-                        'id' => 'nc_advance_templates_settings'),
+                        'id' => 'npcal_advance_templates_settings'),
 
                     array(
                         'title' => __('Templates ', 'nepali-calendar'),
                         'desc' => __('Templates list', 'nepali-calendar'),
-                        'id' => 'nc_layout_list',
+                        'id' => 'npcal_layout_list',
                         'default' => '',
                         'type' => 'select',
                         'class' => 'teg-select',
                         'css' => 'min-width: 200px;',
                         'desc_tip' => true,
-                        'options' => nc_templates(),
+                        'options' => npcal_templates(),
                     ),
 
                     array(
@@ -137,4 +137,4 @@ if (!class_exists('NC_Settings_Advance', false)) :
 
 endif;
 
-return new NC_Settings_Advance();
+return new NPCAL_Settings_Advance();

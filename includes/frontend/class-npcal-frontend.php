@@ -2,7 +2,7 @@
 /**
  * Nepali_Calendar Frontend.
  *
- * @class    NC_Admin
+ * @class    NPCAL_Admin
  * @version  1.0.0
  * @package  Nepali_Calendar/Frontend
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Admin Class
+ * NPCAL_Admin Class
  */
-class NC_Frontend
+class NPCAL_Frontend
 {
 
     /**
@@ -35,10 +35,10 @@ class NC_Frontend
     public function includes()
     {
 
-        include_once(NC_ABSPATH . 'includes' . NC_DS . 'frontend' . NC_DS . 'class-nc-frontend-scripts.php');
+        include_once(NPCAL_ABSPATH . 'includes' . NPCAL_DS . 'frontend' . NPCAL_DS . 'class-npcal-frontend-scripts.php');
 
        
     }
 }
 
-return new NC_Frontend();
+return new NPCAL_Frontend();

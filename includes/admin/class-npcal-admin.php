@@ -2,7 +2,7 @@
 /**
  * Nepali_Calendar Admin.
  *
- * @class    NC_Admin
+ * @class    NPCAL_Admin
  * @version  1.0.0
  * @package  Nepali_Calendar/Admin
  * @category Admin
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Admin Class
+ * NPCAL_Admin Class
  */
-class NC_Admin
+class NPCAL_Admin
 {
 
     /**
@@ -34,15 +34,15 @@ class NC_Admin
     public function includes()
     {
 
-        include_once(dirname(__FILE__) . '/nc-admin-functions.php');
+        include_once(dirname(__FILE__) . '/npcal-admin-functions.php');
 
-        include_once(dirname(__FILE__) . '/class-nc-admin-menus.php');
+        include_once(dirname(__FILE__) . '/class-npcal-admin-menus.php');
 
-        include_once(dirname(__FILE__) . '/class-nc-admin-assets.php');
+        include_once(dirname(__FILE__) . '/class-npcal-admin-assets.php');
 
-        include_once(dirname(__FILE__) . '/class-nc-admin-notices.php');
+        include_once(dirname(__FILE__) . '/class-npcal-admin-notices.php');
 
     }
 }
 
-return new NC_Admin();
+return new NPCAL_Admin();

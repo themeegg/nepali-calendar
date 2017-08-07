@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * NC Shortcodes
+ * NPCAL Shortcodes
  *
  * Used to nepali calendar
  *
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package     Nepali_Calendar/Shortcodes
  * @version     1.0.0
  */
-class NC_Shortcode_Nepali_Calendar implements NC_Shortcode_Interface {
+class NPCAL_Shortcode_Nepali_Calendar implements NPCAL_Shortcode_Interface {
 
 
 	/**
@@ -26,7 +26,7 @@ class NC_Shortcode_Nepali_Calendar implements NC_Shortcode_Interface {
 //			return '';
 //		}
 
-		nc_get_template( 'shortcodes/content-shortcode-nepali-calendar.php' );
+		npcal_get_template( 'shortcodes/content-shortcode-nepali-calendar.php' );
 
 
 	}

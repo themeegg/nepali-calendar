@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
  * @param string $var
  * @return string
  */
-function nc_sanitize_tooltip($var)
+function npcal_sanitize_tooltip($var)
 {
     return htmlspecialchars(wp_kses(html_entity_decode($var), array(
         'br' => array(),
@@ -42,10 +42,10 @@ function nc_sanitize_tooltip($var)
  * @param string|array $var
  * @return string|array
  */
-function nc_clean($var)
+function npcal_clean($var)
 {
     if (is_array($var)) {
-        return array_map('nc_clean', $var);
+        return array_map('npcal_clean', $var);
     } else {
         return is_scalar($var) ? sanitize_text_field($var) : $var;
     }

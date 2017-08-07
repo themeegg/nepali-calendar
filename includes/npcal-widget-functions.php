@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include widget classes.
-include_once( dirname( __FILE__ ) . '/abstracts/abstract-nc-widget.php' );
-include_once( dirname( __FILE__ ) . '/widgets/class-nc-widget-nepali-calendar.php' );
+include_once( dirname( __FILE__ ) . '/abstracts/abstract-npcal-widget.php' );
+include_once( dirname( __FILE__ ) . '/widgets/class-npcal-widget-nepali-calendar.php' );
 
 
 /**
@@ -24,10 +24,10 @@ include_once( dirname( __FILE__ ) . '/widgets/class-nc-widget-nepali-calendar.ph
  *
  * @since 1.0.0
  */
-function nc_register_widgets() {
+function npcal_register_widgets() {
 
-	register_widget( 'NC_Widget_Nepali_Calendar' );
+	register_widget( 'NPCAL_Widget_Nepali_Calendar' );
 
 }
 
-add_action( 'widgets_init', 'nc_register_widgets' );
+add_action( 'widgets_init', 'npcal_register_widgets' );

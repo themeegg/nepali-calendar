@@ -12,12 +12,12 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-if (!class_exists('NC_Settings_Page', false)) :
+if (!class_exists('NPCAL_Settings_Page', false)) :
 
     /**
-     * NC_Settings_Page.
+     * NPCAL_Settings_Page.
      */
-    abstract class NC_Settings_Page
+    abstract class NPCAL_Settings_Page
     {
 
         /**
@@ -130,7 +130,7 @@ if (!class_exists('NC_Settings_Page', false)) :
         {
             $settings = $this->get_settings();
 
-            NC_Admin_Settings::output_fields($settings);
+            NPCAL_Admin_Settings::output_fields($settings);
         }
 
         /**
@@ -141,7 +141,7 @@ if (!class_exists('NC_Settings_Page', false)) :
             global $current_section;
 
             $settings = $this->get_settings();
-            NC_Admin_Settings::save_fields($settings);
+            NPCAL_Admin_Settings::save_fields($settings);
 
             if ($current_section) {
                 do_action('nepali_calendar_update_options_' . $this->id . '_' . $current_section);

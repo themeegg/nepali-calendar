@@ -5,7 +5,7 @@
  * Uses https://github.com/A5hleyRich/wp-background-processing to handle DB
  * updates in the background.
  *
- * @class    NC_Background_Updater
+ * @class    NPCAL_Background_Updater
  * @version  1.0.0
  * @package  Nepali_Calendar/Classes
  * @category Admin
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    if (!class_exists('WP_Async_Request', false)) {
+    if (!class_exists('WP_Asynpcal_Request', false)) {
 
     include_once(dirname(__FILE__) . '/libraries/wp-async-request.php');
 }
@@ -26,9 +26,9 @@ if (!class_exists('WP_Background_Process', false)) {
 }
 
 /**
- * NC_Background_Updater Class.
+ * NPCAL_Background_Updater Class.
  */
-class NC_Background_Updater extends WP_Background_Process
+class NPCAL_Background_Updater extends WP_Background_Process
 {
 
     /**
@@ -98,11 +98,11 @@ class NC_Background_Updater extends WP_Background_Process
      */
     protected function task($callback)
     {
-        if (!defined('NC_UPDATING')) {
-            define('NC_UPDATING', true);
+        if (!defined('NPCAL_UPDATING')) {
+            define('NPCAL_UPDATING', true);
         }
 
-        include_once('functions-nc-update.php');
+        include_once('functions-npcal-update.php');
 
         if (is_callable($callback)) {
             call_user_func($callback);
@@ -119,7 +119,7 @@ class NC_Background_Updater extends WP_Background_Process
      */
     protected function complete()
     {
-        NC_Install::update_db_version();
+        NPCAL_Install::update_db_version();
         parent::complete();
     }
 }

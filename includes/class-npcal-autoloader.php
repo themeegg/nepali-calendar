@@ -2,7 +2,7 @@
 /**
  * Nepali_Calendar Autoloader.
  *
- * @class    NC_Autoloader
+ * @class    NPCAL_Autoloader
  * @version  1.0.0
  * @package  Nepali_Calendar/Classes
  * @category Class
@@ -14,9 +14,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * NC_Autoloader Class
+ * NPCAL_Autoloader Class
  */
-class NC_Autoloader
+class NPCAL_Autoloader
 {
 
     /**
@@ -37,7 +37,7 @@ class NC_Autoloader
 
         spl_autoload_register(array($this, 'autoload'));
 
-        $this->include_path = untrailingslashit(plugin_dir_path(NC_PLUGIN_FILE)) . '/includes/';
+        $this->include_path = untrailingslashit(plugin_dir_path(NPCAL_PLUGIN_FILE)) . '/includes/';
     }
 
     /**
@@ -65,7 +65,7 @@ class NC_Autoloader
     }
 
     /**
-     * Auto-load NC classes on demand to reduce memory consumption.
+     * Auto-load NPCAL classes on demand to reduce memory consumption.
      * @param string $class
      */
     public function autoload($class)
@@ -76,20 +76,20 @@ class NC_Autoloader
 
         $path = '';
 
-        if (strpos($class, 'nc_shortcode_') === 0) {
+        if (strpos($class, 'npcal_shortcode_') === 0) {
 
             $path = $this->include_path . 'shortcodes/';
 
-        } else if (strpos($class, 'nc_meta_box') === 0) {
+        } else if (strpos($class, 'npcal_meta_box') === 0) {
 
             $path = $this->include_path . 'admin/meta-boxes/';
 
-        } elseif (strpos($class, 'nc_admin') === 0) {
+        } elseif (strpos($class, 'npcal_admin') === 0) {
 
             $path = $this->include_path . 'admin/';
         }
 
-        if (empty($path) || (!$this->load_file($path . $file) && strpos($class, 'nc_') === 0)) {
+        if (empty($path) || (!$this->load_file($path . $file) && strpos($class, 'npcal_') === 0)) {
 
             $this->load_file($this->include_path . $file);
         }
@@ -97,4 +97,4 @@ class NC_Autoloader
     }
 }
 
-new NC_Autoloader();
+new NPCAL_Autoloader();

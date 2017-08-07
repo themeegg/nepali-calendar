@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nepali Calendar 1.0.0\n"
 "Report-Msgid-Bugs-To: themeeggofficial@gmail.com\n"
-"POT-Creation-Date: 2017-08-04 14:36:59+00:00\n"
+"POT-Creation-Date: 2017-08-07 13:57:12+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,85 +17,84 @@ msgstr ""
 msgid "Nepali Calendar"
 msgstr ""
 
-#: includes/admin/class-nc-admin-notices.php:113
-#: includes/admin/class-nc-admin-settings.php:69
+#: includes/admin/class-npcal-admin-notices.php:113
+#: includes/admin/class-npcal-admin-settings.php:69
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: includes/admin/class-nc-admin-notices.php:117 nepali-calendar.php:71
+#: includes/admin/class-npcal-admin-notices.php:117 nepali-calendar.php:71
 #: nepali-calendar.php:79
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:77
+#: includes/admin/class-npcal-admin-settings.php:77
 msgid "Your settings have been saved."
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:138
+#: includes/admin/class-npcal-admin-settings.php:138
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:525
+#: includes/admin/class-npcal-admin-settings.php:525
 msgid ""
 "The settings of this image size have been disabled because its values are "
 "being overwritten by a filter."
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:534
+#: includes/admin/class-npcal-admin-settings.php:534
 msgid "Hard crop?"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:561
+#: includes/admin/class-npcal-admin-settings.php:561
 msgid "Select a page&hellip;"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:583
+#: includes/admin/class-npcal-admin-settings.php:583
 msgid "Choose a country&hellip;"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:583
-#: includes/admin/class-nc-admin-settings.php:608
+#: includes/admin/class-npcal-admin-settings.php:583
+#: includes/admin/class-npcal-admin-settings.php:608
 msgid "Country"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:608
+#: includes/admin/class-npcal-admin-settings.php:608
 msgid "Choose countries&hellip;"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:616
+#: includes/admin/class-npcal-admin-settings.php:616
 msgid "Select all"
 msgstr ""
 
-#: includes/admin/class-nc-admin-settings.php:616
+#: includes/admin/class-npcal-admin-settings.php:616
 msgid "Select none"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:32
+#: includes/admin/settings/class-npcal-settings-advance.php:32
 msgid "Advance"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:49
+#: includes/admin/settings/class-npcal-settings-advance.php:49
 msgid "Template Setting"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:95
+#: includes/admin/settings/class-npcal-settings-advance.php:95
 msgid "Other Settings"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:110
+#: includes/admin/settings/class-npcal-settings-advance.php:110
 msgid "Dialog Layouts"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:115
+#: includes/admin/settings/class-npcal-settings-advance.php:115
 msgid "Templates "
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-advance.php:116
+#: includes/admin/settings/class-npcal-settings-advance.php:116
 msgid "Templates list"
 msgstr ""
 
-#: includes/admin/settings/class-nc-settings-general.php:77
-#: includes/shortcodes/class-nc-shortcode-nepali-calendar.php:81
+#: includes/admin/settings/class-npcal-settings-general.php:77
 msgid "Close"
 msgstr ""
 
@@ -141,63 +140,63 @@ msgstr ""
 msgid "Taking a while? Click here to run it now."
 msgstr ""
 
-#: includes/class-nc-install.php:239
+#: includes/class-npcal-install.php:219
 msgid "View Nepali Calendar Settings"
 msgstr ""
 
-#: includes/class-nc-install.php:239
+#: includes/class-npcal-install.php:219
 msgid "Settings"
 msgstr ""
 
-#: includes/class-nc-install.php:257
+#: includes/class-npcal-install.php:237
 msgid "View Nepali Calendar Documentation"
 msgstr ""
 
-#: includes/class-nc-install.php:257
+#: includes/class-npcal-install.php:237
 msgid "Docs"
 msgstr ""
 
-#: includes/class-nc-install.php:258
+#: includes/class-npcal-install.php:238
 msgid "Visit Free Customer Support Forum"
 msgstr ""
 
-#: includes/class-nc-install.php:258
+#: includes/class-npcal-install.php:238
 msgid "Free Support"
 msgstr ""
 
-#: includes/class-nc-lang.php:44
+#: includes/class-npcal-lang.php:44
 msgid "Close button label"
 msgstr ""
 
-#: includes/class-nc-lang.php:46
+#: includes/class-npcal-lang.php:46
 msgid "General"
 msgstr ""
 
-#: includes/class-nc-lang.php:48
+#: includes/class-npcal-lang.php:48
 msgid "General options"
 msgstr ""
 
-#: includes/class-nc-lang.php:50
+#: includes/class-npcal-lang.php:50
 msgid "Dialog width"
 msgstr ""
 
-#: includes/class-nc-lang.php:52
+#: includes/class-npcal-lang.php:52
 msgid "Dialog width, you can use, % or px or auto"
 msgstr ""
 
-#: includes/class-nc-lang.php:54
+#: includes/class-npcal-lang.php:54
 msgid "Show dialog close button ? "
 msgstr ""
 
-#: includes/class-nc-lang.php:56
+#: includes/class-npcal-lang.php:56
 msgid "Label for dialog close button."
 msgstr ""
 
-#: includes/class-nc-lang.php:58
+#: includes/class-npcal-lang.php:58
 msgid "Nifty Modal Setting"
 msgstr ""
 
-#: includes/class-nc-query.php:66
+#: includes/class-npcal-query.php:66
 msgid "Pay for order"
 msgstr ""
 
@@ -205,24 +204,24 @@ msgstr ""
 msgid "Every %d minutes"
 msgstr ""
 
-#: includes/nc-core-functions.php:96
+#: includes/npcal-core-functions.php:96
 msgid "%s does not exist."
 msgstr ""
 
-#: includes/nc-core-functions.php:193
+#: includes/npcal-core-functions.php:193
 msgid "Default"
 msgstr ""
 
-#: includes/nc-core-functions.php:194
+#: includes/npcal-core-functions.php:194
 msgid "Nifty Modal"
 msgstr ""
 
-#: includes/shortcodes/class-nc-shortcode-nepali-calendar.php:85
-msgid "Post not available"
+#: includes/widgets/class-npcal-widget-nepali-calendar.php:26
+msgid "Nepali Bikram Sambad Calendar."
 msgstr ""
 
-#: includes/shortcodes/class-nc-shortcode-nepali-calendar.php:89
-msgid "Post not available, please check your shortcode once."
+#: includes/widgets/class-npcal-widget-nepali-calendar.php:33
+msgid "Title"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

@@ -2,7 +2,7 @@
 /**
  * Contains language string
  *
- * @class       NC_Lang
+ * @class       NPCAL_Lang
  * @version     1.0.0
  * @package     Nepali_Calendar/Classes
  * @category    Class
@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * NC_Lang Class.
+ * NPCAL_Lang Class.
  */
-class NC_Lang {
+class NPCAL_Lang {
 
 
 	public static function text( $language_key ) {
