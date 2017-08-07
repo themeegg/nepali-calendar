@@ -4,9 +4,9 @@
  *
  * General core functions available on both the front-end and admin.
  *
- * @author        ThemeEgg
+ * @author      ThemeEgg
  * @category    Core
- * @package    Nepali_Calendar/Functions
+ * @package     Nepali_Calendar/Functions
  * @version     1.0.0
  */
 
@@ -190,59 +190,12 @@ function npcal_templates() {
 	return apply_filters( 'nepali_calendar_templates', array(
 
 
-		'default'     => __( 'Default', 'nepali-calendar' ),
-		'nifty_modal' => __( 'Nifty Modal', 'nepali-calendar' ),
+		'default' => __( 'Default', 'nepali-calendar' ),
+		'dark'    => __( 'Dark Theme', 'nepali-calendar' ),
+		'light'   => __( 'Light Theme', 'nepali-calendar' ),
 
 
 	) );
 }
 
-function npcal_nifty_modal_setting_options() {
-
-	return apply_filters( 'nepali_calendar_nifty_modal_settings', array(
-
-		'modal-1'  => 'Fade in & Scale',
-		'modal-2'  => 'Slide in (right)',
-		'modal-3'  => 'Slide in (bottom)',
-		'modal-4'  => 'Newspaper',
-		'modal-5'  => 'Fall',
-		'modal-6'  => 'Side Fall',
-		'modal-7'  => 'Sticky Up',
-		'modal-8'  => '3D Flip (horizontal)',
-		'modal-9'  => '3D Flip (vertical)',
-		'modal-10' => '3D Sign',
-		'modal-11' => 'Super Scaled',
-		'modal-12' => 'Just Me',
-		'modal-13' => '3D Slit',
-		'modal-14' => '3D Rotate Bottom',
-		'modal-15' => '3D Rotate In Left',
-		'modal-16' => 'Blur',
-		'modal-17' => 'Let me in',
-		'modal-18' => 'Make way!',
-		'modal-19' => 'Slip from top',
-
-
-	) );
-
-}
-
-
-function npcal_is_modal_template( $handle ) {
-
-	$template = get_option( 'npcal_layout_list', 'default' );
-
-	$template = str_replace( '_', '-', $template );
-
-	if ( $template === 'default' && $handle === 'nepali-calendar-frontend-style' ) {
-
-		return true;
-	}
-
-	if ( strpos( $handle, $template ) !== false ) {
-
-		return true;
-	}
-
-	return false;
-}
 

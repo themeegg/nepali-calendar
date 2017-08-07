@@ -107,7 +107,7 @@ if (!class_exists('NPCAL_Settings_Advance', false)) :
             } else {
                 $settings = apply_filters('nepali_calendar_general_settings', array(
                     array(
-                        'title' => __('Dialog Layouts', 'nepali-calendar'),
+                        'title' => __('Calendar Layouts', 'nepali-calendar'),
                         'type' => 'title',
                         'id' => 'npcal_advance_templates_settings'),
 
