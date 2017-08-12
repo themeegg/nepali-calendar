@@ -24,7 +24,7 @@ if ( ! class_exists( 'NPCAL_Admin_Menus', false ) ) :
 		 */
 		public function __construct() {
 			// Add menus
-			add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
+			//add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
 
 
 		}

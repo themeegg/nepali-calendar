@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nepali Calendar 1.0.0\n"
 "Report-Msgid-Bugs-To: themeeggofficial@gmail.com\n"
-"POT-Creation-Date: 2017-08-07 13:57:12+00:00\n"
+"POT-Creation-Date: 2017-08-12 07:50:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,7 +83,7 @@ msgid "Other Settings"
 msgstr ""
 
 #: includes/admin/settings/class-npcal-settings-advance.php:110
-msgid "Dialog Layouts"
+msgid "Calendar Layouts"
 msgstr ""
 
 #: includes/admin/settings/class-npcal-settings-advance.php:115
@@ -213,7 +213,11 @@ msgid "Default"
 msgstr ""
 
 #: includes/npcal-core-functions.php:194
-msgid "Nifty Modal"
+msgid "Dark Theme"
+msgstr ""
+
+#: includes/npcal-core-functions.php:195
+msgid "Light Theme"
 msgstr ""
 
 #: includes/widgets/class-npcal-widget-nepali-calendar.php:26
