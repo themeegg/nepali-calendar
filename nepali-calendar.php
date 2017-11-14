@@ -3,7 +3,7 @@
  * Plugin Name: Nepali Calendar
  * Plugin URI: http://themeegg.com/plugins/nepali-calendar
  * Description: Nepali calendar wordpress plugin
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: ThemeEgg
  * Author URI: http://themeegg.com
  * Requires at least: 4.0
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Nepali_Calendar' ) ) :
 		 * Plugin version.
 		 * @var string
 		 */
-		public $version = '1.0.0';
+		public $version = '1.0.1';
 
 		/**
 		 * Query instance.

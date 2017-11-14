@@ -3,8 +3,8 @@ Contributors: ThemeEgg
 Donate link: http://themeegg.com
 Tags: Patro, Nepali Calender, Calender, Nepali To English Date, Conversion, Nepali Date, Calender, Nepali, Date, Nepali Calender Widget, Widget, JQuery Calender, JQuery Nepali Calender, JQuery Nepali Calender Plugin, Wordpress Calender Plugin, Wordpress Calender Widget, Wordpress Nepali Calender Plugin, Wordpress Nepali Calender Widget
 Requires at least: 3.0.1
-Tested up to: 4.8.0
-Stable tag: 1.1.1
+Tested up to: 4.9
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,8 @@ Please visit our official twitter api master page(http://doc.themeegg.com/plugin
 
 == Changelog ==
 
+= 1.0.1 - 2017/11/14 =
+* Version compability test
 
 = 1.0 =
 * Initial Release

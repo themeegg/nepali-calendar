@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Include widget classes.
 include_once( dirname( __FILE__ ) . '/abstracts/abstract-npcal-widget.php' );
 include_once( dirname( __FILE__ ) . '/widgets/class-npcal-widget-nepali-calendar.php' );
+include_once( dirname( __FILE__ ) . '/widgets/class-npcal-widget-nepali-date-converter.php' );
 
 
 /**
@@ -27,6 +28,7 @@ include_once( dirname( __FILE__ ) . '/widgets/class-npcal-widget-nepali-calendar
 function npcal_register_widgets() {
 
 	register_widget( 'NPCAL_Widget_Nepali_Calendar' );
+	register_widget( 'NPCAL_Widget_Nepali_Date_Converter' );
 
 }
 
